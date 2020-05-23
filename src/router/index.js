@@ -7,9 +7,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "ShowsListing",
+    name: "shows",
     component: () =>
       import(/* webpackChunkName: "showslisting" */ "../views/ShowsListing.vue")
+  },
+  {
+    path: "/show/:id",
+    name: "show",
+    component: () =>
+      import(/* webpackChunkName: "showdetail" */ "../views/ShowDetail.vue"),
+    props: true
   },
   {
     path: "/404",
