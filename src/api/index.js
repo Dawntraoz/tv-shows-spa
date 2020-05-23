@@ -1,4 +1,5 @@
 import axios from "axios";
+import { cacheAdapterEnhancer } from "axios-extensions";
 import router from "@/router";
 
 const api = axios.create({
@@ -7,7 +8,11 @@ const api = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"
-  }
+  },
+  adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
+    enabledByDefault: false,
+    cacheFlag: "useCache"
+  })
 });
 
 // Interceptor for responses
