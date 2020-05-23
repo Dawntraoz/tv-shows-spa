@@ -1,5 +1,5 @@
 <template>
-  <v-card color="transparent" flat width="200">
+  <v-card color="transparent" flat width="185">
     <router-link :to="{ name: 'show', params: { id: item.id } }">
       <v-card elevation="6">
         <v-img

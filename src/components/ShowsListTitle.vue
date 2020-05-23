@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12">
+  <v-col cols="12" class="pb-4">
     <h2>{{ title }}</h2>
   </v-col>
 </template>
