@@ -19,11 +19,9 @@ export default {
   components: {
     HelloWorld
   },
-  data: () => {
-    return {
-      shows: []
-    };
-  },
+  data: () => ({
+    shows: []
+  }),
   mounted() {
     getAllShows().then(res => (this.shows = res.data));
   }
