@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// Globals
+$body-font-family: 'Muli', sans-serif;
+$border-radius-root: 6px;
+$font-size-root: 16px;
+
+@import '~vuetify/src/styles/styles.sass';
+
+// You need to map-merge your new SASS variables
+$grid-breakpoints: map-merge($container-max-widths, (
+  md: map-get($grid-breakpoints, 'md') * 0.9375,
+  lg: map-get($grid-breakpoints, 'lg') * 0.9375,
+  xl: 1280
+))
