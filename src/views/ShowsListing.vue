@@ -34,12 +34,16 @@ export default {
     ShowsListItem
   },
   mounted() {
-    getAllShows().then(res => {
-      this.genres = res.data
-        .reduce((acc, show) => acc.concat(show.genres), [])
-        .filter((genre, index, self) => self.indexOf(genre) === index);
-      this.shows = res.data;
-    });
+    getAllShows()
+      .then(res => {
+        this.genres = res.data
+          .reduce((acc, show) => acc.concat(show.genres), [])
+          .filter((genre, index, self) => self.indexOf(genre) === index);
+        this.shows = res.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     showsByGenre: function(genre) {

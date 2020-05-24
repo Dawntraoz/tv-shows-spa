@@ -1,9 +1,10 @@
 // Libraries
 import Vue from "vue";
 import Vuetify from "vuetify";
+import VueRouter from "vue-router";
 
 // Components
-import HelloWorld from "@/components/HelloWorld.vue";
+import App from "@/App.vue";
 
 // Utilities
 import { createLocalVue, shallowMount } from "@vue/test-utils";
@@ -11,22 +12,21 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 Vue.use(Vuetify);
 const localVue = createLocalVue();
 localVue.use(Vuetify);
+localVue.use(VueRouter);
+const router = new VueRouter();
 
-describe("HelloWorld.vue", () => {
+describe("App.vue", () => {
   const mountFunction = options => {
-    return shallowMount(HelloWorld, {
+    return shallowMount(App, {
       localVue,
+      router,
       ...options
     });
   };
 
-  it("should have a custom message", () => {
-    const wrapper = mountFunction({
-      propsData: {
-        msg: "message"
-      }
-    });
+  it("should have a component name", () => {
+    const wrapper = mountFunction();
 
-    expect(wrapper.text()).toMatch("message");
+    expect(wrapper.name()).toMatch("App");
   });
 });
