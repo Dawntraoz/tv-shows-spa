@@ -9,23 +9,23 @@
 </template>
 
 <script>
-import TheHeader from "@/components/TheHeader.vue";
-import TheSearch from "@/components/TheSearch.vue";
-import { mapMutations } from "vuex";
+import TheHeader from '@/components/TheHeader.vue'
+import TheSearch from '@/components/TheSearch.vue'
+import { mapMutations } from 'vuex'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     TheHeader,
-    TheSearch
+    TheSearch,
   },
   watch: {
     $route() {
-      this.setOpenOverlay(false);
-    }
+      this.setOpenOverlay(false)
+    },
   },
   methods: {
-    ...mapMutations("Search", ["setOpenOverlay"])
-  }
-};
+    ...mapMutations('Search', ['setOpenOverlay']),
+  },
+}
 </script>

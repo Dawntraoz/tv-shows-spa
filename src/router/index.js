@@ -1,36 +1,38 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 // Route level code-splitting: separate chunks by name.[hash].js
 const routes = [
   {
-    path: "/",
-    name: "shows",
+    path: '/',
+    name: 'shows',
     component: () =>
-      import(/* webpackChunkName: "showslisting" */ "../views/ShowsListing.vue")
+      import(
+        /* webpackChunkName: "showslisting" */ '../views/ShowsListing.vue'
+      ),
   },
   {
-    path: "/show/:id",
-    name: "show",
+    path: '/show/:id',
+    name: 'show',
     component: () =>
-      import(/* webpackChunkName: "showdetail" */ "../views/ShowDetail.vue"),
-    props: true
+      import(/* webpackChunkName: "showdetail" */ '../views/ShowDetail.vue'),
+    props: true,
   },
   {
-    path: "/404",
-    alias: "*",
-    name: "notFound",
+    path: '/404',
+    alias: '*',
+    name: 'notFound',
     component: () =>
-      import(/* webpackChunkName: "notfound" */ "../views/NotFound.vue")
-  }
-];
+      import(/* webpackChunkName: "notfound" */ '../views/NotFound.vue'),
+  },
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes
-});
+  routes,
+})
 
-export default router;
+export default router

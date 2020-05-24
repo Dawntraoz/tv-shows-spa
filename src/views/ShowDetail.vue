@@ -32,38 +32,38 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: "ShowDetail",
+  name: 'ShowDetail',
   props: {
-    id: [Number, String]
+    id: [Number, String],
   },
   computed: {
-    ...mapGetters("Shows", ["getShowInfo"]),
-    ...mapGetters("Shows", ["getShowImages"]),
+    ...mapGetters('Shows', ['getShowInfo']),
+    ...mapGetters('Shows', ['getShowImages']),
     backgroundImage() {
       return this.getShowImages.length > 0
-        ? this.getShowImages.filter(image => image.type === "background")[0]
-        : "";
+        ? this.getShowImages.filter(image => image.type === 'background')[0]
+        : ''
     },
     posterImage() {
       return this.getShowImages.length > 0
-        ? this.getShowImages.filter(image => image.type === "poster")[0]
-        : "";
-    }
+        ? this.getShowImages.filter(image => image.type === 'poster')[0]
+        : ''
+    },
   },
   async mounted() {
-    await this.fetchShow(this.id);
+    await this.fetchShow(this.id)
   },
   methods: {
-    ...mapActions("Shows", ["fetchShow"])
+    ...mapActions('Shows', ['fetchShow']),
   },
   async beforeRouteUpdate(to, from, next) {
-    await this.fetchShow(to.params.id);
-    next();
-  }
-};
+    await this.fetchShow(to.params.id)
+    next()
+  },
+}
 </script>
 
 <style lang="scss">

@@ -3,24 +3,24 @@
  * - openOverlay (Boolean)
  */
 const state = {
-  openOverlay: false
-};
+  openOverlay: false,
+}
 
 const getters = {
   getOpenOverlay(state) {
-    return state.openOverlay;
-  }
-};
+    return state.openOverlay
+  },
+}
 
 const mutations = {
   setOpenOverlay(state, data) {
-    state.openOverlay = data;
-  }
-};
+    state.openOverlay = data
+  },
+}
 
 export default {
   namespaced: true,
   state,
   getters,
-  mutations
-};
+  mutations,
+}

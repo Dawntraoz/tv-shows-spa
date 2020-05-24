@@ -25,14 +25,14 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations } from 'vuex'
 export default {
-  name: "TheHeader",
+  name: 'TheHeader',
   computed: {
-    ...mapGetters("Search", ["getOpenOverlay"])
+    ...mapGetters('Search', ['getOpenOverlay']),
   },
   methods: {
-    ...mapMutations("Search", ["setOpenOverlay"])
-  }
-};
+    ...mapMutations('Search', ['setOpenOverlay']),
+  },
+}
 </script>

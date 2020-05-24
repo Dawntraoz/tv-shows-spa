@@ -1,32 +1,32 @@
 // Libraries
-import Vue from "vue";
-import Vuetify from "vuetify";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import VueRouter from 'vue-router'
 
 // Components
-import App from "@/App.vue";
+import App from '@/App.vue'
 
 // Utilities
-import { createLocalVue, shallowMount } from "@vue/test-utils";
+import { createLocalVue, shallowMount } from '@vue/test-utils'
 
-Vue.use(Vuetify);
-const localVue = createLocalVue();
-localVue.use(Vuetify);
-localVue.use(VueRouter);
-const router = new VueRouter();
+Vue.use(Vuetify)
+const localVue = createLocalVue()
+localVue.use(Vuetify)
+localVue.use(VueRouter)
+const router = new VueRouter()
 
-describe("App.vue", () => {
+describe('App.vue', () => {
   const mountFunction = options => {
     return shallowMount(App, {
       localVue,
       router,
-      ...options
-    });
-  };
+      ...options,
+    })
+  }
 
-  it("should have a component name", () => {
-    const wrapper = mountFunction();
+  it('should have a component name', () => {
+    const wrapper = mountFunction()
 
-    expect(wrapper.name()).toMatch("App");
-  });
-});
+    expect(wrapper.name()).toMatch('App')
+  })
+})

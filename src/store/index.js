@@ -1,17 +1,17 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 // Modules
-import Shows from "./modules/shows";
-import Search from "./modules/search";
+import Shows from './modules/shows'
+import Search from './modules/search'
 
 const store = new Vuex.Store({
   modules: {
     Shows: Shows,
-    Search: Search
-  }
-});
+    Search: Search,
+  },
+})
 
-export default store;
+export default store

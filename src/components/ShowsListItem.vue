@@ -23,9 +23,9 @@
 
 <script>
 export default {
-  name: "ShowsListItem",
+  name: 'ShowsListItem',
   props: {
-    item: Object
-  }
-};
+    item: Object,
+  },
+}
 </script>

@@ -31,33 +31,36 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { getSearchShows } from "@/api/search.api";
-import ShowsListItem from "./ShowsListItem.vue";
+import { mapGetters, mapMutations } from 'vuex'
+import { getSearchShows } from '@/api/search.api'
+import ShowsListItem from './ShowsListItem.vue'
 
 export default {
-  name: "TheSearch",
+  name: 'TheSearch',
   data: () => ({
-    query: "",
-    shows: []
+    query: '',
+    shows: [],
+    message: '',
   }),
   components: {
-    ShowsListItem
+    ShowsListItem,
   },
   computed: {
-    ...mapGetters("Search", ["getOpenOverlay"])
+    ...mapGetters('Search', ['getOpenOverlay']),
   },
   methods: {
-    ...mapMutations("Search", ["setOpenOverlay"]),
+    ...mapMutations('Search', ['setOpenOverlay']),
     async searchShows() {
+      this.message = ''
+
       getSearchShows(this.query)
         .then(res => (this.shows = res.data))
         .catch(error => {
-          console.log(error);
-        });
-    }
-  }
-};
+          this.message = error
+        })
+    },
+  },
+}
 </script>
 
 <style lang="scss">

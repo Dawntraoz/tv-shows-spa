@@ -18,37 +18,37 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-import ShowsListTitle from "@/components/ShowsListTitle.vue";
-import ShowsListItem from "@/components/ShowsListItem.vue";
+import { mapActions, mapGetters } from 'vuex'
+import ShowsListTitle from '@/components/ShowsListTitle.vue'
+import ShowsListItem from '@/components/ShowsListItem.vue'
 
 export default {
-  name: "ShowsListing",
+  name: 'ShowsListing',
   data: () => ({
-    isLoading: false
+    isLoading: false,
   }),
   components: {
     ShowsListTitle,
-    ShowsListItem
+    ShowsListItem,
   },
   computed: {
-    ...mapGetters("Shows", ["getShows"]),
-    ...mapGetters("Shows", ["getGenres"])
+    ...mapGetters('Shows', ['getShows']),
+    ...mapGetters('Shows', ['getGenres']),
   },
   methods: {
-    ...mapActions("Shows", ["fetchShows"]),
+    ...mapActions('Shows', ['fetchShows']),
     showsByGenre: function(genre) {
-      return this.getShows.filter(show => show.genres.some(g => g === genre));
-    }
+      return this.getShows.filter(show => show.genres.some(g => g === genre))
+    },
   },
   async mounted() {
     if (this.getShows.length === 0) {
-      this.isLoading = true;
-      await this.fetchShows();
-      this.isLoading = false;
+      this.isLoading = true
+      await this.fetchShows()
+      this.isLoading = false
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss">

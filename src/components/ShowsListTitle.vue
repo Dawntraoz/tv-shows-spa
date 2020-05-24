@@ -6,9 +6,9 @@
 
 <script>
 export default {
-  name: "ShowsListTitle",
+  name: 'ShowsListTitle',
   props: {
-    title: String
-  }
-};
+    title: String,
+  },
+}
 </script>

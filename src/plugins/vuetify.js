@@ -1,9 +1,9 @@
-import Vue from "vue";
-import Vuetify from "vuetify/lib";
+import Vue from 'vue'
+import Vuetify from 'vuetify/lib'
 
-import colors from "vuetify/lib/util/colors";
+import colors from 'vuetify/lib/util/colors'
 
-Vue.use(Vuetify);
+Vue.use(Vuetify)
 
 export default new Vuetify({
   breakpoint: {
@@ -12,16 +12,16 @@ export default new Vuetify({
       sm: 476,
       md: 768,
       lg: 1140,
-      xl: 1280
-    }
+      xl: 1280,
+    },
   },
   theme: {
     themes: {
       light: {
         primary: colors.blue.base,
         secondary: colors.blueGrey.darken4,
-        accent: colors.blue.darken4
-      }
-    }
-  }
-});
+        accent: colors.blue.darken4,
+      },
+    },
+  },
+})

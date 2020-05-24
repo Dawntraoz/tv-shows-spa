@@ -1,8 +1,8 @@
-import api from ".";
+import api from '.'
 
-const END_POINT = "/search/shows?q=";
+const END_POINT = '/search/shows?q='
 
 // Get Show details
-const getSearchShows = query => api.get(END_POINT + query);
+const getSearchShows = query => api.get(END_POINT + query)
 
-export { getSearchShows };
+export { getSearchShows }
