@@ -7,10 +7,11 @@
           :src="item.image.medium"
           width="175"
           height="275"
+          class="blue-grey darken-4"
         />
       </v-card>
     </router-link>
-    <h3 class="pt-2">{{ item.name }}</h3>
+    <h4 class="white--text subtitle-1 pt-2">{{ item.name }}</h4>
   </v-card>
 </template>
 

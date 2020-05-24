@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app class="light-blue lighten-5" flat>
+  <v-app-bar app class="blue-grey darken-4" flat>
     <v-spacer></v-spacer>
 
     <div class="d-flex align-center">

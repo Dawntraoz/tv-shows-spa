@@ -5,20 +5,11 @@ $body-font-family: 'Muli', sans-serif;
 $border-radius-root: 6px;
 $font-size-root: 16px;
 
-$headings: (
-  'h1': (
-    'size': 5rem,
-    'line-height': 1.5rem
-  ),
-  'h2': (
-    'size': 3rem,
-    'line-height': 1.5rem
-  )
-);
+@import '~vuetify/src/styles/styles.sass';
 
-$grid-breakpoints: (
-    'xs': 0,
-    'sm': 600px,
-    'md': 960px,
-    'lg': 1140px
-);
+// You need to map-merge your new SASS variables
+$grid-breakpoints: map-merge($container-max-widths, (
+  md: map-get($grid-breakpoints, 'md') * 0.9375,
+  lg: map-get($grid-breakpoints, 'lg') * 0.9375,
+  xl: 1280
+))
