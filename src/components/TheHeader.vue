@@ -18,8 +18,21 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn icon color="primary">
+    <v-btn icon color="white" @click="setOpenOverlay(!getOpenOverlay)">
       <v-icon>mdi-magnify</v-icon>
     </v-btn>
   </v-app-bar>
 </template>
+
+<script>
+import { mapGetters, mapMutations } from "vuex";
+export default {
+  name: "TheHeader",
+  computed: {
+    ...mapGetters("Search", ["getOpenOverlay"])
+  },
+  methods: {
+    ...mapMutations("Search", ["setOpenOverlay"])
+  }
+};
+</script>

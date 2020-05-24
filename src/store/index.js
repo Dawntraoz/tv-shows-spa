@@ -5,10 +5,12 @@ Vue.use(Vuex);
 
 // Modules
 import Shows from "./modules/shows";
+import Search from "./modules/search";
 
 const store = new Vuex.Store({
   modules: {
-    Shows: Shows
+    Shows: Shows,
+    Search: Search
   }
 });
 
