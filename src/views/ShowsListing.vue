@@ -36,10 +36,10 @@ export default {
     ...mapGetters("Shows", ["getGenres"])
   },
   methods: {
+    ...mapActions("Shows", ["fetchShows"]),
     showsByGenre: function(genre) {
       return this.getShows.filter(show => show.genres.some(g => g === genre));
-    },
-    ...mapActions("Shows", ["fetchShows"])
+    }
   },
   async mounted() {
     if (this.getShows.length === 0) {

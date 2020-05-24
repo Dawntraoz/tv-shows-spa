@@ -20,6 +20,7 @@ localVue.use(Vuex);
 
 describe("ShowsListing.vue", () => {
   let store;
+  let wrapper;
 
   beforeEach(() => {
     store = new Vuex.Store({
@@ -27,6 +28,14 @@ describe("ShowsListing.vue", () => {
         Shows: cloneDeep(Shows)
       }
     });
+
+    wrapper = mountFunction();
+  });
+
+  afterEach(() => {
+    wrapper.destroy();
+    jest.resetModules();
+    jest.clearAllMocks();
   });
 
   const mountFunction = options => {
@@ -38,8 +47,12 @@ describe("ShowsListing.vue", () => {
   };
 
   it("should have a component name", () => {
-    const wrapper = mountFunction();
-
     expect(wrapper.name()).toMatch("ShowsListing");
+  });
+
+  it("should have a component name", () => {
+    const results = wrapper.vm.showsByGenre("Drama");
+
+    expect(results).toEqual([]);
   });
 });

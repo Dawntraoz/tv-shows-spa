@@ -13,6 +13,18 @@ const localVue = createLocalVue();
 localVue.use(Vuetify);
 
 describe("ShowDetail.vue", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mountFunction();
+  });
+
+  afterEach(() => {
+    wrapper.destroy();
+    jest.resetModules();
+    jest.clearAllMocks();
+  });
+
   const mountFunction = options => {
     return shallowMount(ShowDetail, {
       localVue,
@@ -21,8 +33,6 @@ describe("ShowDetail.vue", () => {
   };
 
   it("should have a component name", () => {
-    const wrapper = mountFunction();
-
     expect(wrapper.name()).toMatch("ShowDetail");
   });
 });
