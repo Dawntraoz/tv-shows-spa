@@ -13,6 +13,8 @@
           </v-col>
           <v-col cols="12" md="8">
             <h1 class="display-3">{{ info.name }}</h1>
+            {{ info.rating.average }}
+            <v-icon color="orange">mdi-star</v-icon>
           </v-col>
         </v-row>
       </v-container>

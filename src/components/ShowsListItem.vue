@@ -1,5 +1,5 @@
 <template>
-  <v-card color="transparent" flat width="185">
+  <v-card color="transparent" class="white--text" flat width="185">
     <router-link :to="{ name: 'show', params: { id: item.id } }">
       <v-card elevation="6">
         <v-img
@@ -11,7 +11,13 @@
         />
       </v-card>
     </router-link>
-    <h4 class="white--text subtitle-1 pt-2">{{ item.name }}</h4>
+    <h4 class="subtitle-1 pt-2">
+      {{ item.name }}
+    </h4>
+    <span class="subtitle-1">
+      {{ item.rating.average }}
+      <v-icon color="orange">mdi-star</v-icon>
+    </span>
   </v-card>
 </template>
 
