@@ -6,14 +6,15 @@
     :value="getOpenOverlay"
     class="search d-flex"
   >
-    <div class="search-overlay">
+    <div class="search-overlay d-flex flex-column">
       <v-btn class="ml-auto" icon color="white" @click="setOpenOverlay(false)">
         <v-icon>mdi-close</v-icon>
       </v-btn>
       <v-text-field
-        label="Search your favorite TV show"
         v-model="query"
         @input="searchShows"
+        label="Search your favorite TV show"
+        class="pt-6"
       ></v-text-field>
       <div v-if="shows.length > 0" class="search-overlay__listing pt-12">
         <v-slide-group multiple show-arrows>

@@ -7,8 +7,8 @@
     >
       <v-card class="transparent white--text" flat>
         <v-container>
-          <v-row dense>
-            <v-col cols="12" md="4">
+          <v-row class="py-md-12">
+            <v-col cols="12" md="5">
               <v-img
                 v-if="posterImage"
                 :src="posterImage.resolutions.original.url"
@@ -17,12 +17,29 @@
                 width="400"
               ></v-img>
             </v-col>
-            <v-col cols="12" md="8">
-              <h1 class="display-3">{{ getShowInfo.name }}</h1>
-              <span v-if="getShowInfo.rating && getShowInfo.rating.average">
-                {{ getShowInfo.rating.average }}
-                <v-icon color="orange">mdi-star</v-icon>
-              </span>
+            <v-col cols="12" md="7" class="pa-4">
+              <h1 class="display-2">
+                {{ getShowInfo.name }}
+              </h1>
+              <div class="d-flex flex-column pt-2">
+                <p class="subtitle-1">
+                  <span
+                    v-for="genre in getShowInfo.genres"
+                    :key="genre"
+                    class="pr-2"
+                  >
+                    {{ genre }}
+                  </span>
+                </p>
+                <p
+                  class="headline d-flex align-center"
+                  v-if="getShowInfo.rating && getShowInfo.rating.average"
+                >
+                  {{ getShowInfo.rating.average }}
+                  <v-icon color="orange">mdi-star</v-icon>
+                </p>
+                <div v-html="getShowInfo.summary"></div>
+              </div>
             </v-col>
           </v-row>
         </v-container>

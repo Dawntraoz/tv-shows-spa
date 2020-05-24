@@ -50,29 +50,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.v-slide-group__prev,
-.v-slide-group__next {
-  position: absolute;
-  top: -4rem;
-
-  .v-icon {
-    font-size: 40px;
-    color: rgba(255, 255, 255, 1);
-  }
-
-  &.v-slide-group__next--disabled,
-  &.v-slide-group__prev--disabled {
-    .v-icon.v-icon--disabled {
-      color: rgba(255, 255, 255, 0.15) !important;
-    }
-  }
-}
-.v-slide-group__prev {
-  right: 3rem;
-}
-.v-slide-group__next {
-  right: 0;
-}
-</style>
