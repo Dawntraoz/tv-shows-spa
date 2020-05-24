@@ -1,6 +1,11 @@
 // import the api endpoints
 import { getAllShows } from "@/api/shows.api";
 
+/**
+ * Shows state:
+ * - shows (Array of Objects)
+ * - genres (Array of Strings)
+ */
 const state = {
   shows: [],
   genres: []
