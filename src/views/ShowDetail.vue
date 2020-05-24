@@ -46,9 +46,22 @@ export default {
         : "";
     }
   },
-  mounted() {
-    getShow(this.id).then(res => (this.info = res.data));
-    getShowImages(this.id).then(res => (this.images = res.data));
+  async mounted() {
+    await this.getShow();
+  },
+  methods: {
+    async getShow() {
+      getShow(this.id)
+        .then(res => (this.info = res.data))
+        .catch(error => {
+          console.log(error);
+        });
+      getShowImages(this.id)
+        .then(res => (this.images = res.data))
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

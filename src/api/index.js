@@ -19,7 +19,6 @@ const api = axios.create({
 const responseInterceptor = response => {
   switch (response.status) {
     case 200:
-      console.log("Exito");
       break;
   }
 

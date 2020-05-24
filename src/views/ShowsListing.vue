@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row v-for="genre in genres" :key="genre">
+    <v-row v-for="genre in getGenres" :key="genre">
       <ShowsListTitle :title="genre" />
       <v-col cols="12">
         <v-slide-group multiple show-arrows>
@@ -18,32 +18,34 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import { getAllShows } from "@/api/shows.api";
+import { mapActions, mapGetters } from "vuex";
 import ShowsListTitle from "@/components/ShowsListTitle.vue";
 import ShowsListItem from "@/components/ShowsListItem.vue";
 
 export default {
   name: "ShowsListing",
   data: () => ({
-    genres: [],
-    shows: []
+    isLoading: false
   }),
   components: {
     ShowsListTitle,
     ShowsListItem
   },
-  mounted() {
-    getAllShows().then(res => {
-      this.genres = res.data
-        .reduce((acc, show) => acc.concat(show.genres), [])
-        .filter((genre, index, self) => self.indexOf(genre) === index);
-      this.shows = res.data;
-    });
+  computed: {
+    ...mapGetters("Shows", ["getShows"]),
+    ...mapGetters("Shows", ["getGenres"])
   },
   methods: {
+    ...mapActions("Shows", ["fetchShows"]),
     showsByGenre: function(genre) {
-      return this.shows.filter(show => show.genres.some(g => g === genre));
+      return this.getShows.filter(show => show.genres.some(g => g === genre));
+    }
+  },
+  async mounted() {
+    if (this.getShows.length === 0) {
+      this.isLoading = true;
+      await this.fetchShows();
+      this.isLoading = false;
     }
   }
 };
