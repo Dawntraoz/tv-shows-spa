@@ -49,4 +49,11 @@ describe('TheSearch.vue', () => {
   it('should have a component name', () => {
     expect(wrapper.name()).toMatch('TheSearch')
   })
+
+  it('should change query value and message be void', () => {
+    wrapper.vm.query = 'test'
+    wrapper.vm.searchShows()
+    expect(wrapper.vm.query).toMatch('test')
+    expect(wrapper.vm.message).toMatch('')
+  })
 })
