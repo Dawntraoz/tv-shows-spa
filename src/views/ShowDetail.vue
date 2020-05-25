@@ -2,7 +2,7 @@
   <div>
     <v-parallax
       class="blue-grey darken-4"
-      height="90vh"
+      height="auto"
       :src="backgroundImage | urlFormatter"
     >
       <v-container>
@@ -84,8 +84,9 @@ export default {
     ...mapActions('Shows', ['fetchShow']),
   },
   async beforeRouteUpdate(to, from, next) {
-    await this.fetchShow(to.params.id)
-    next()
+    this.fetchShow(to.params.id).then(() => {
+      next()
+    })
   },
 }
 </script>
