@@ -34,7 +34,7 @@
                 v-if="getShowInfo.rating && getShowInfo.rating.average"
               >
                 {{ getShowInfo.rating.average }}
-                <v-icon color="orange">mdi-star</v-icon>
+                <v-icon color="orange">{{ starIcon }}</v-icon>
               </p>
               <div v-html="getShowInfo.summary"></div>
             </div>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { mdiStar } from '@mdi/js'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -53,6 +54,9 @@ export default {
   props: {
     id: [Number, String],
   },
+  data: () => ({
+    starIcon: mdiStar,
+  }),
   computed: {
     ...mapGetters('Shows', ['getShowInfo']),
     ...mapGetters('Shows', ['getShowImages']),

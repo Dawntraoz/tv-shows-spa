@@ -24,4 +24,7 @@ export default new Vuetify({
       },
     },
   },
+  icons: {
+    iconfont: 'mdiSvg',
+  },
 })

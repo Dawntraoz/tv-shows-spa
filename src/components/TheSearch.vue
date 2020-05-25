@@ -8,7 +8,7 @@
   >
     <div class="search-overlay d-flex flex-column">
       <v-btn class="ml-auto" icon color="white" @click="setOpenOverlay(false)">
-        <v-icon>mdi-close</v-icon>
+        <v-icon>{{ closeIcon }}</v-icon>
       </v-btn>
       <v-text-field
         v-model="query"
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mdiClose } from '@mdi/js'
 import { mapGetters, mapMutations } from 'vuex'
 import { getSearchShows } from '@/api/search.api'
 import ShowsListItem from './ShowsListItem.vue'
@@ -39,6 +40,7 @@ import ShowsListItem from './ShowsListItem.vue'
 export default {
   name: 'TheSearch',
   data: () => ({
+    closeIcon: mdiClose,
     query: '',
     shows: [],
     message: '',

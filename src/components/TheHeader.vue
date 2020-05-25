@@ -19,15 +19,20 @@
     <v-spacer></v-spacer>
 
     <v-btn icon color="white" @click="setOpenOverlay(!getOpenOverlay)">
-      <v-icon>mdi-magnify</v-icon>
+      <v-icon>{{ searchIcon }}</v-icon>
     </v-btn>
   </v-app-bar>
 </template>
 
 <script>
+import { mdiMagnify } from '@mdi/js'
 import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   name: 'TheHeader',
+  data: () => ({
+    searchIcon: mdiMagnify,
+  }),
   computed: {
     ...mapGetters('Search', ['getOpenOverlay']),
   },
