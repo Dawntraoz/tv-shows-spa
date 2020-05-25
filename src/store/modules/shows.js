@@ -32,7 +32,12 @@ const actions = {
   async fetchShows({ commit }) {
     getAllShows()
       .then(response => {
-        commit('SET_SHOWS', response.data)
+        commit(
+          'SET_SHOWS',
+          response.data.sort((prevValue, nextValue) =>
+            prevValue.rating.average < nextValue.rating.average ? 1 : -1,
+          ),
+        )
         commit(
           'SET_GENRES',
           response.data

@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <v-lazy
+    :options="{
+      threshold: 0.5,
+    }"
+    transition="fade-transition"
+  >
     <v-parallax
       class="blue-grey darken-4"
       height="auto"
@@ -42,7 +47,7 @@
         </v-row>
       </v-container>
     </v-parallax>
-  </div>
+  </v-lazy>
 </template>
 
 <script>

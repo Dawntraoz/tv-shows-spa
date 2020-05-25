@@ -2,7 +2,9 @@
   <v-app>
     <TheHeader />
     <v-content class="blue-grey darken-4">
-      <router-view />
+      <transition name="fade">
+        <router-view />
+      </transition>
     </v-content>
     <TheSearch />
   </v-app>
@@ -53,5 +55,13 @@ export default {
 }
 .v-slide-group__next {
   right: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
