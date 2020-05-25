@@ -3,15 +3,24 @@
     <v-row v-for="genre in getGenres" :key="genre">
       <ShowsListTitle :title="genre" />
       <v-col cols="12">
-        <v-slide-group multiple show-arrows>
-          <v-slide-item
-            v-for="show in showsByGenre(genre)"
-            :key="'Show ' + show.id"
-            class="pr-4"
-          >
-            <ShowsListItem :item="show" />
-          </v-slide-item>
-        </v-slide-group>
+        <v-lazy
+          v-model="isActive"
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="360"
+          transition="fade-transition"
+        >
+          <v-slide-group multiple show-arrows>
+            <v-slide-item
+              v-for="show in showsByGenre(genre)"
+              :key="'Show ' + show.id"
+              class="pr-4"
+            >
+              <ShowsListItem :item="show" />
+            </v-slide-item>
+          </v-slide-group>
+        </v-lazy>
       </v-col>
     </v-row>
   </v-container>
