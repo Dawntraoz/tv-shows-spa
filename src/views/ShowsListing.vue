@@ -32,22 +32,16 @@ import ShowsListItem from '@/components/ShowsListItem.vue'
 
 export default {
   name: 'ShowsListing',
-  data: () => ({
-    isLoading: false,
-  }),
   components: {
     ShowsListTitle,
     ShowsListItem,
   },
+  data: () => ({
+    isLoading: false,
+  }),
   computed: {
     ...mapGetters('Shows', ['getShows']),
     ...mapGetters('Shows', ['getGenres']),
-  },
-  methods: {
-    ...mapActions('Shows', ['fetchShows']),
-    showsByGenre: function(genre) {
-      return this.getShows.filter(show => show.genres.some(g => g === genre))
-    },
   },
   async mounted() {
     if (this.getShows.length === 0) {
@@ -55,6 +49,14 @@ export default {
       await this.fetchShows()
       this.isLoading = false
     }
+  },
+  methods: {
+    ...mapActions('Shows', ['fetchShows']),
+    showsByGenre: function(genre) {
+      return this.getShows
+        .filter(show => show.genres.some(g => g === genre))
+        .slice(0, 10)
+    },
   },
 }
 </script>

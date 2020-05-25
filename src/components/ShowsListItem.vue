@@ -14,16 +14,21 @@
     </h4>
     <span v-if="item.rating && item.rating.average" class="subtitle-1">
       {{ item.rating.average }}
-      <v-icon color="orange">mdi-star</v-icon>
+      <v-icon color="orange">{{ starIcon }}</v-icon>
     </span>
   </v-card>
 </template>
 
 <script>
+import { mdiStar } from '@mdi/js'
+
 export default {
   name: 'ShowsListItem',
   props: {
     item: Object,
   },
+  data: () => ({
+    starIcon: mdiStar,
+  }),
 }
 </script>

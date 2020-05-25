@@ -39,15 +39,15 @@ import ShowsListItem from './ShowsListItem.vue'
 
 export default {
   name: 'TheSearch',
+  components: {
+    ShowsListItem,
+  },
   data: () => ({
     closeIcon: mdiClose,
     query: '',
     shows: [],
     message: '',
   }),
-  components: {
-    ShowsListItem,
-  },
   computed: {
     ...mapGetters('Search', ['getOpenOverlay']),
   },
