@@ -1,34 +1,19 @@
-// Libraries
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-
-// Store
-import Vuex from 'vuex'
-import Shows from '@/store/modules/shows'
-import { cloneDeep } from 'lodash'
-
 // Components
 import ShowDetail from '@/views/ShowDetail.vue'
 
+// Custom store
+import store from '@/store'
+
 // Utilities
+import { appInit } from './app-init'
 import { createLocalVue, shallowMount } from '@vue/test-utils'
 
-Vue.use(Vuetify)
-const localVue = createLocalVue()
-localVue.use(Vuetify)
-localVue.use(Vuex)
+const localVue = appInit(createLocalVue())
 
 describe('ShowDetail.vue', () => {
-  let store
   let wrapper
 
   beforeEach(() => {
-    store = new Vuex.Store({
-      modules: {
-        Shows: cloneDeep(Shows),
-      },
-    })
-
     wrapper = mountFunction()
   })
 

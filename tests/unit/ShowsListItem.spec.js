@@ -1,8 +1,5 @@
-// Store
-import store from '@/store'
-
 // Components
-import ShowsListing from '@/views/ShowsListing.vue'
+import ShowsListItem from '@/components/ShowsListItem.vue'
 
 // Utilities
 import { appInit } from './app-init'
@@ -10,7 +7,7 @@ import { createLocalVue, shallowMount } from '@vue/test-utils'
 
 const localVue = appInit(createLocalVue())
 
-describe('ShowsListing.vue', () => {
+describe('ShowsListItem.vue', () => {
   let wrapper
 
   beforeEach(() => {
@@ -19,25 +16,22 @@ describe('ShowsListing.vue', () => {
 
   afterEach(() => {
     wrapper.destroy()
-    jest.resetModules()
-    jest.clearAllMocks()
   })
 
   const mountFunction = options => {
-    return shallowMount(ShowsListing, {
+    return shallowMount(ShowsListItem, {
       localVue,
-      store,
+      propsData: {
+        item: {
+          id: 1,
+          name: 'Test',
+        },
+      },
       ...options,
     })
   }
 
   it('should have a component name', () => {
-    expect(wrapper.name()).toMatch('ShowsListing')
-  })
-
-  it('should have a component name', () => {
-    const results = wrapper.vm.showsByGenre('Drama')
-
-    expect(results).toEqual([])
+    expect(wrapper.name()).toMatch('ShowsListItem')
   })
 })
