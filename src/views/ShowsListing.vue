@@ -4,7 +4,6 @@
       <ShowsListTitle :title="genre" />
       <v-col cols="12">
         <v-lazy
-          v-model="isActive"
           :options="{
             threshold: 0.5,
           }"

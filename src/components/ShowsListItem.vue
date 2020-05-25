@@ -1,15 +1,13 @@
 <template>
   <v-card color="transparent" class="white--text" flat width="185">
     <router-link :to="{ name: 'show', params: { id: item.id } }">
-      <v-card elevation="6">
-        <v-img
-          :alt="item.name"
-          :src="item.image ? item.image.medium : '' | urlFormatter"
-          width="175"
-          height="275"
-          class="blue-grey darken-4"
-        />
-      </v-card>
+      <v-img
+        :alt="item.name"
+        :src="item.image ? item.image.medium : '' | urlFormatter"
+        width="175"
+        height="275"
+        class="blue-grey darken-4 elevation-6"
+      />
     </router-link>
     <h4 class="subtitle-1 pt-2">
       {{ item.name }}
