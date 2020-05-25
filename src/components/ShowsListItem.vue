@@ -4,7 +4,7 @@
       <v-card elevation="6">
         <v-img
           :alt="item.name"
-          :src="item.image ? item.image.medium : ''"
+          :src="item.image ? item.image.medium : '' | urlFormatter"
           width="175"
           height="275"
           class="blue-grey darken-4"

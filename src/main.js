@@ -7,6 +7,11 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+Vue.filter('urlFormatter', function(value) {
+  if (!value) return ''
+  return value.replace(/^http:\/\//i, 'https://')
+})
+
 new Vue({
   router,
   store,

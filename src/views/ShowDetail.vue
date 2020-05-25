@@ -3,15 +3,14 @@
     <v-parallax
       class="blue-grey darken-4"
       height="90vh"
-      :src="backgroundImage ? backgroundImage.resolutions.original.url : ''"
+      :src="backgroundImage | urlFormatter"
     >
       <v-card class="transparent white--text" flat>
         <v-container>
           <v-row class="py-md-12">
             <v-col cols="12" md="5">
               <v-img
-                v-if="posterImage"
-                :src="posterImage.resolutions.original.url"
+                :src="posterImage | urlFormatter"
                 class="ml-auto"
                 contain
                 width="400"
@@ -60,14 +59,20 @@ export default {
     ...mapGetters('Shows', ['getShowInfo']),
     ...mapGetters('Shows', ['getShowImages']),
     backgroundImage() {
-      return this.getShowImages.length > 0
-        ? this.getShowImages.filter(image => image.type === 'background')[0]
-        : ''
+      if (this.getShowImages.length <= 0) return ''
+
+      const bgImage = this.getShowImages.filter(
+        image => image.type === 'background',
+      )[0]
+      return bgImage ? bgImage.resolutions.original.url : ''
     },
     posterImage() {
-      return this.getShowImages.length > 0
-        ? this.getShowImages.filter(image => image.type === 'poster')[0]
-        : ''
+      if (this.getShowImages.length <= 0) return ''
+
+      const psImage = this.getShowImages.filter(
+        image => image.type === 'poster',
+      )[0]
+      return psImage ? psImage.resolutions.original.url : ''
     },
   },
   async mounted() {
