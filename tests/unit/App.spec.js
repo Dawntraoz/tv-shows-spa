@@ -3,6 +3,7 @@ import App from '@/App.vue'
 
 // Custom router
 import router from '@/router'
+import store from '@/store'
 
 // Utilities
 import { appInit } from './app-init'
@@ -17,6 +18,7 @@ describe('App.vue', () => {
     return shallowMount(App, {
       localVue,
       router,
+      store,
       ...options,
     })
   }
@@ -25,7 +27,12 @@ describe('App.vue', () => {
     wrapper = mountFunction()
   })
 
-  it('should have a component name', () => {
+  afterEach(() => {
+    wrapper.destroy()
+  })
+
+  it('should have a component name App and be a Vue instance',  () => {
+    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.name()).toMatch('App')
   })
 

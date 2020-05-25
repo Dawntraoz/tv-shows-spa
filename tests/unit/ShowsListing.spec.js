@@ -13,6 +13,14 @@ const localVue = appInit(createLocalVue())
 describe('ShowsListing.vue', () => {
   let wrapper
 
+  const mountFunction = options => {
+    return shallowMount(ShowsListing, {
+      localVue,
+      store,
+      ...options,
+    })
+  }
+
   beforeEach(() => {
     wrapper = mountFunction()
   })
@@ -23,19 +31,11 @@ describe('ShowsListing.vue', () => {
     jest.clearAllMocks()
   })
 
-  const mountFunction = options => {
-    return shallowMount(ShowsListing, {
-      localVue,
-      store,
-      ...options,
-    })
-  }
-
-  it('should have a component name', () => {
+  it('should have a component name', async () => {
     expect(wrapper.name()).toMatch('ShowsListing')
   })
 
-  it('should have a component name', () => {
+  it('should have a component name', async () => {
     const results = wrapper.vm.showsByGenre('Drama')
 
     expect(results).toEqual([])
