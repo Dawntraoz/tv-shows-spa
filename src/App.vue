@@ -36,11 +36,17 @@ export default {
 .v-slide-group__prev,
 .v-slide-group__next {
   position: absolute;
-  top: -4rem;
+  top: -3.75rem;
 
   .v-icon {
-    font-size: 40px;
+    font-size: 35px;
     color: rgba(255, 255, 255, 1);
+
+    &,
+    svg {
+      height: 35px;
+      width: 35px;
+    }
   }
 
   &.v-slide-group__next--disabled,
@@ -54,7 +60,7 @@ export default {
   right: 3rem;
 }
 .v-slide-group__next {
-  right: 0;
+  right: -0.5rem;
 }
 .fade-enter-active,
 .fade-leave-active {

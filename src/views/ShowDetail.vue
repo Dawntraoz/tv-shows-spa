@@ -89,7 +89,7 @@ export default {
     ...mapActions('Shows', ['fetchShow']),
   },
   async beforeRouteUpdate(to, from, next) {
-    this.fetchShow(to.params.id).then(() => {
+    this.fetchShow(to.params.id).finally(() => {
       next()
     })
   },
