@@ -1,5 +1,9 @@
 <template>
   <v-app-bar app class="blue-grey darken-4" flat>
+    <router-link to="/">
+      <v-icon color="white">{{ listIcon }}</v-icon>
+    </router-link>
+
     <v-spacer></v-spacer>
 
     <div class="d-flex align-center">
@@ -25,13 +29,14 @@
 </template>
 
 <script>
-import { mdiMagnify } from '@mdi/js'
+import { mdiMagnify, mdiViewDashboard } from '@mdi/js'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'TheHeader',
   data: () => ({
     searchIcon: mdiMagnify,
+    listIcon: mdiViewDashboard,
   }),
   computed: {
     ...mapGetters('Search', ['getOpenOverlay']),
