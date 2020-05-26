@@ -31,7 +31,7 @@ describe('App.vue', () => {
     wrapper.destroy()
   })
 
-  it('should have a component name App and be a Vue instance',  () => {
+  it('should be a Vue instance and be called App', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.name()).toMatch('App')
   })

@@ -54,7 +54,7 @@ export default {
     ...mapActions('Shows', ['fetchShows']),
     showsByGenre: function(genre) {
       return this.getShows
-        .filter(show => show.genres.some(g => g === genre))
+        .filter(show => show.genres && show.genres.some(g => g === genre))
         .slice(0, 10)
     },
   },
