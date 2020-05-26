@@ -31,14 +31,18 @@ describe('TheSearch.vue', () => {
     })
   }
 
-  it('should have a component name', () => {
+  it('should be a Vue instance and be called TheSearch', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.name()).toMatch('TheSearch')
   })
 
-  it('should change query value and message be void', () => {
+  it('should have a query value of test', done => {
     wrapper.vm.query = 'test'
-    wrapper.vm.searchShows()
-    expect(wrapper.vm.query).toMatch('test')
-    expect(wrapper.vm.message).toMatch('')
+    wrapper.vm
+      .searchShows()
+      .then(() => {
+        expect(wrapper.vm.query).toMatch('test')
+      })
+      .finally(done)
   })
 })

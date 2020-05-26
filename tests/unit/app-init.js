@@ -5,12 +5,12 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 
 // Api
-import axios from 'axios'
+import moxios from 'moxios'
 import api from '@/api'
 
-function appInit(VueInstance, { axiosInstance = api } = {}) {
+function appInit(VueInstance) {
   Vue.use(Vuetify)
-  VueInstance.use(axios, axiosInstance)
+  moxios.install(api)
   VueInstance.use(VueRouter)
   VueInstance.use(Vuex)
   VueInstance.use(Vuetify)

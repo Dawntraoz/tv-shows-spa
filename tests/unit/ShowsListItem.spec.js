@@ -31,7 +31,8 @@ describe('ShowsListItem.vue', () => {
     wrapper.destroy()
   })
 
-  it('should have a component name', () => {
+  it('should be a Vue instance and be called ShowsListItem', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.name()).toMatch('ShowsListItem')
   })
 })

@@ -31,7 +31,8 @@ describe('ShowDetail.vue', () => {
     jest.clearAllMocks()
   })
 
-  it('should have a component name', async () => {
+  it('should be a Vue instance and be called ShowDetail', async () => {
+    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.name()).toMatch('ShowDetail')
   })
 })

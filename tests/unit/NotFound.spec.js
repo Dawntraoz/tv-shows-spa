@@ -18,6 +18,7 @@ describe('NotFound.vue', () => {
   it('should have a component name', () => {
     const wrapper = mountFunction()
 
+    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.name()).toMatch('NotFound')
   })
 })
