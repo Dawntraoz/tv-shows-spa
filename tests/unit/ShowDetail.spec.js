@@ -1,46 +1,32 @@
 // Components
 import ShowDetail from '@/views/ShowDetail.vue'
 
-// Custom store
-import Vuex from 'vuex'
-
 // Custom router
 import router from '@/router'
 
 // Utilities
 import { appInit } from './app-init'
 import { createLocalVue, shallowMount } from '@vue/test-utils'
+import { __createMocks as createStoreMocks } from '@/store'
+
+jest.mock('@/store')
 
 const localVue = appInit(createLocalVue())
 
 describe('ShowDetail.vue', () => {
-  let getters = {
-    getShowInfo: jest.fn().mockReturnValue([{}]),
-    getShowImages: jest.fn().mockReturnValue([{}]),
-  }
-  let actions = {
-    fetchShow: jest.fn(),
-  }
-  let Shows = {
-    namespaced: true,
-    getters,
-    actions,
-  }
-  let store = new Vuex.Store({
-    modules: {
-      Shows: Shows,
-    },
-  })
+  let storeMocks
   let wrapper
 
   const mountFunction = options => {
+    storeMocks = createStoreMocks()
+
     return shallowMount(ShowDetail, {
       localVue,
       propsData: {
         id: 1,
       },
       router,
-      store,
+      store: storeMocks.store,
       ...options,
     })
   }
@@ -61,16 +47,62 @@ describe('ShowDetail.vue', () => {
   })
 
   describe('Computed properties', () => {
-    it('should return a void bg image', () => {
+    it('should return a background image and a poster image', () => {
+      expect(wrapper.vm.backgroundImage).toBe('background.jpg')
+      expect(wrapper.vm.posterImage).toBe('poster.jpg')
+    })
+    it('should return a background image and void poster image', () => {
+      storeMocks = createStoreMocks({
+        showsGetters: {
+          getShowImages: () => [
+            {
+              type: 'background',
+              resolutions: {
+                original: {
+                  url: 'background.jpg',
+                },
+              },
+            },
+          ],
+        },
+      })
+      wrapper = mountFunction({ store: storeMocks.store })
+      expect(wrapper.vm.backgroundImage).toBe('background.jpg')
+      expect(wrapper.vm.posterImage).toBe('')
+    })
+    it('should return a void background image and a poster image', () => {
+      storeMocks = createStoreMocks({
+        showsGetters: {
+          getShowImages: () => [
+            {
+              type: 'poster',
+              resolutions: {
+                original: {
+                  url: 'poster.jpg',
+                },
+              },
+            },
+          ],
+        },
+      })
+      wrapper = mountFunction({ store: storeMocks.store })
       expect(wrapper.vm.backgroundImage).toBe('')
+      expect(wrapper.vm.posterImage).toBe('poster.jpg')
+    })
+    it('should return a void background image and void poster image', () => {
+      storeMocks = createStoreMocks({
+        showsGetters: { getShowImages: () => [] },
+      })
+      wrapper = mountFunction({ store: storeMocks.store })
+      expect(wrapper.vm.backgroundImage).toBe('')
+      expect(wrapper.vm.posterImage).toBe('')
     })
   })
 
   it('should call the before route update hook', async () => {
-    const beforeRouteUpdate = wrapper.vm.$options.beforeRouteUpdate[0]
     const next = jest.fn()
 
-    await beforeRouteUpdate.call(
+    ShowDetail.beforeRouteUpdate.call(
       wrapper.vm,
       {
         params: {
@@ -80,7 +112,9 @@ describe('ShowDetail.vue', () => {
       {},
       next,
     )
+    await wrapper.vm.$nextTick()
 
+    expect(storeMocks.showsActions.fetchShow).toHaveBeenCalled()
     expect(next).toHaveBeenCalled()
   })
 })
