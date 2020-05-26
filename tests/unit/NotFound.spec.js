@@ -1,16 +1,11 @@
-// Libraries
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-
 // Components
 import NotFound from '@/views/NotFound.vue'
 
 // Utilities
+import { appInit } from './app-init'
 import { createLocalVue, shallowMount } from '@vue/test-utils'
 
-Vue.use(Vuetify)
-const localVue = createLocalVue()
-localVue.use(Vuetify)
+const localVue = appInit(createLocalVue())
 
 describe('NotFound.vue', () => {
   const mountFunction = options => {

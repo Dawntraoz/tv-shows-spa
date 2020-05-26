@@ -1,8 +1,5 @@
 // Components
-import ShowDetail from '@/views/ShowDetail.vue'
-
-// Custom store
-import store from '@/store'
+import ShowsListItem from '@/components/ShowsListItem.vue'
 
 // Utilities
 import { appInit } from './app-init'
@@ -10,13 +7,18 @@ import { createLocalVue, shallowMount } from '@vue/test-utils'
 
 const localVue = appInit(createLocalVue())
 
-describe('ShowDetail.vue', () => {
+describe('ShowsListItem.vue', () => {
   let wrapper
 
   const mountFunction = options => {
-    return shallowMount(ShowDetail, {
+    return shallowMount(ShowsListItem, {
       localVue,
-      store,
+      propsData: {
+        item: {
+          id: 1,
+          name: 'Test',
+        },
+      },
       ...options,
     })
   }
@@ -27,11 +29,9 @@ describe('ShowDetail.vue', () => {
 
   afterEach(() => {
     wrapper.destroy()
-    jest.resetModules()
-    jest.clearAllMocks()
   })
 
-  it('should have a component name', async () => {
-    expect(wrapper.name()).toMatch('ShowDetail')
+  it('should have a component name', () => {
+    expect(wrapper.name()).toMatch('ShowsListItem')
   })
 })

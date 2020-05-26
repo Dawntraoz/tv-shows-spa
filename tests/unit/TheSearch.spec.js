@@ -1,34 +1,19 @@
-// Libraries
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-
 // Store
-import Vuex from 'vuex'
-import Search from '@/store/modules/search'
-import { cloneDeep } from 'lodash'
+import store from '@/store'
 
 // Components
 import TheSearch from '@/components/TheSearch.vue'
 
 // Utilities
+import { appInit } from './app-init'
 import { createLocalVue, shallowMount } from '@vue/test-utils'
 
-Vue.use(Vuetify)
-const localVue = createLocalVue()
-localVue.use(Vuetify)
-localVue.use(Vuex)
+const localVue = appInit(createLocalVue())
 
 describe('TheSearch.vue', () => {
-  let store
   let wrapper
 
   beforeEach(() => {
-    store = new Vuex.Store({
-      modules: {
-        Search: cloneDeep(Search),
-      },
-    })
-
     wrapper = mountFunction()
   })
 

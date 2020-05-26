@@ -1,8 +1,8 @@
-// Components
-import ShowDetail from '@/views/ShowDetail.vue'
-
-// Custom store
+// Store
 import store from '@/store'
+
+// Components
+import TheHeader from '@/components/TheHeader.vue'
 
 // Utilities
 import { appInit } from './app-init'
@@ -10,11 +10,11 @@ import { createLocalVue, shallowMount } from '@vue/test-utils'
 
 const localVue = appInit(createLocalVue())
 
-describe('ShowDetail.vue', () => {
+describe('TheHeader.vue', () => {
   let wrapper
 
   const mountFunction = options => {
-    return shallowMount(ShowDetail, {
+    return shallowMount(TheHeader, {
       localVue,
       store,
       ...options,
@@ -27,11 +27,10 @@ describe('ShowDetail.vue', () => {
 
   afterEach(() => {
     wrapper.destroy()
-    jest.resetModules()
-    jest.clearAllMocks()
   })
 
-  it('should have a component name', async () => {
-    expect(wrapper.name()).toMatch('ShowDetail')
+  // Inspect the raw component options
+  it('should have data', () => {
+    expect(typeof TheHeader.data).toBe('function')
   })
 })
