@@ -41,6 +41,13 @@ export const showsActions = {
   fetchShow: jest.fn(),
 }
 
+export const showsMutations = {
+  SET_SHOWS: jest.fn(),
+  SET_GENRES: jest.fn(),
+  SET_SHOW_INFO: jest.fn(),
+  SET_SHOW_IMAGES: jest.fn(),
+}
+
 export const showsState = {
   shows: [
     {
@@ -68,16 +75,27 @@ export const showsState = {
 
 // eslint-disable-next-line no-underscore-dangle
 export function __createMocks(
-  custom = { showsState: {}, showsGetters: {}, showsActions: {} },
+  custom = {
+    showsState: {},
+    showsGetters: {},
+    showsActions: {},
+    showsMutations: {},
+  },
 ) {
   const mockShowsState = Object.assign({}, showsState, custom.showsState)
   const mockShowsGetters = Object.assign({}, showsGetters, custom.showsGetters)
   const mockShowsActions = Object.assign({}, showsActions, custom.showsActions)
+  const mockShowsMutations = Object.assign(
+    {},
+    showsMutations,
+    custom.showsMutations,
+  )
 
   return {
     showsState: mockShowsState,
     showsGetters: mockShowsGetters,
     showsActions: mockShowsActions,
+    showsMutations: mockShowsMutations,
     store: new Vuex.Store({
       modules: {
         Shows: {
@@ -85,6 +103,7 @@ export function __createMocks(
           state: mockShowsState,
           getters: mockShowsGetters,
           actions: mockShowsActions,
+          mutations: mockShowsMutations,
         },
         Search: {
           namespaced: true,
