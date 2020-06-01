@@ -115,6 +115,6 @@ describe('ShowDetail.vue', () => {
     await wrapper.vm.$nextTick()
 
     expect(storeMocks.showsActions.fetchShow).toHaveBeenCalled()
-    expect(next).toHaveBeenCalled()
+    expect(storeMocks.showsActions.fetchShowImages).toHaveBeenCalled()
   })
 })

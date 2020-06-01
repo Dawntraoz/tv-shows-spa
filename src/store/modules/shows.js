@@ -5,6 +5,8 @@ import { getAllShows, getShow, getShowImages } from '@/api/shows.api'
  * Shows state:
  * - shows (Array of Objects)
  * - genres (Array of Strings)
+ * - showInfo (Object)
+ * - showImages (Array of Objects)
  */
 const state = {
   shows: [],
@@ -30,36 +32,28 @@ const getters = {
 
 const actions = {
   async fetchShows({ commit }) {
-    getAllShows()
-      .then(response => {
-        commit(
-          'SET_SHOWS',
-          response.data.sort((prevValue, nextValue) =>
-            prevValue.rating.average < nextValue.rating.average ? 1 : -1,
-          ),
-        )
-        commit(
-          'SET_GENRES',
-          response.data
-            .reduce((acc, show) => acc.concat(show.genres), [])
-            .filter((genre, index, self) => self.indexOf(genre) === index),
-        )
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    return getAllShows().then(response => {
+      commit(
+        'SET_SHOWS',
+        response.data.sort((prevValue, nextValue) =>
+          prevValue.rating.average < nextValue.rating.average ? 1 : -1,
+        ),
+      )
+      commit(
+        'SET_GENRES',
+        response.data
+          .reduce((acc, show) => acc.concat(show.genres), [])
+          .filter((genre, index, self) => self.indexOf(genre) === index),
+      )
+    })
   },
   async fetchShow({ commit }, id) {
-    getShow(id)
-      .then(response => commit('SET_SHOW_INFO', response.data))
-      .catch(error => {
-        console.log(error)
-      })
-    getShowImages(id)
-      .then(response => commit('SET_SHOW_IMAGES', response.data))
-      .catch(error => {
-        console.log(error)
-      })
+    return getShow(id).then(response => commit('SET_SHOW_INFO', response.data))
+  },
+  async fetchShowImages({ commit }, id) {
+    return getShowImages(id).then(response =>
+      commit('SET_SHOW_IMAGES', response.data),
+    )
   },
 }
 
