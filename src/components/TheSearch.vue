@@ -46,7 +46,6 @@ export default {
     closeIcon: mdiClose,
     query: '',
     shows: [],
-    message: '',
   }),
   computed: {
     ...mapGetters('Search', ['getOpenOverlay']),
@@ -54,13 +53,7 @@ export default {
   methods: {
     ...mapMutations('Search', ['setOpenOverlay']),
     async searchShows() {
-      this.message = ''
-
-      getSearchShows(this.query)
-        .then(res => (this.shows = res.data))
-        .catch(error => {
-          this.message = error
-        })
+      getSearchShows(this.query).then(res => (this.shows = res.data))
     },
   },
 }
