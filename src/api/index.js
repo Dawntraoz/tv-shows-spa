@@ -29,11 +29,10 @@ const responseInterceptor = response => {
 const errorInterceptor = error => {
   let path = '/error'
 
-  switch (error.response.status) {
-    case 404:
-      path = '/404'
-      break
+  if (error.response && error.response.status === 404) {
+    path = '/404'
   }
+
   router.push(path)
   return Promise.reject(error)
 }

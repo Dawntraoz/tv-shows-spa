@@ -83,12 +83,15 @@ export default {
     },
   },
   async mounted() {
+    await this.fetchShowImages(this.id)
     await this.fetchShow(this.id)
   },
   methods: {
     ...mapActions('Shows', ['fetchShow']),
+    ...mapActions('Shows', ['fetchShowImages']),
   },
   async beforeRouteUpdate(to, from, next) {
+    await this.fetchShowImages(to.params.id)
     await this.fetchShow(to.params.id)
     next()
   },

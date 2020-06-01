@@ -39,6 +39,7 @@ export const showsGetters = {
 export const showsActions = {
   fetchShows: jest.fn(),
   fetchShow: jest.fn(),
+  fetchShowImages: jest.fn(),
 }
 
 export const showsMutations = {
