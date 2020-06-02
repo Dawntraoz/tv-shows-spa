@@ -6,7 +6,8 @@ const path = require('path')
 app = express()
 app.use(history())
 
-app.use(expressStaticGzip(path.join(__dirname, 'dist')))
+// gzip
+app.use('/', expressStaticGzip(path.join(__dirname, 'dist')))
 
 const port = process.env.PORT || 80
 app.listen(port)
