@@ -7,7 +7,13 @@
     class="search d-flex"
   >
     <div class="search-overlay d-flex flex-column">
-      <v-btn class="ml-auto" icon color="white" @click="setOpenOverlay(false)">
+      <v-btn
+        class="ml-auto"
+        icon
+        aria-label="close"
+        color="white"
+        @click="setOpenOverlay(false)"
+      >
         <v-icon>{{ closeIcon }}</v-icon>
       </v-btn>
       <v-text-field
@@ -46,7 +52,6 @@ export default {
     closeIcon: mdiClose,
     query: '',
     shows: [],
-    message: '',
   }),
   computed: {
     ...mapGetters('Search', ['getOpenOverlay']),
@@ -54,13 +59,7 @@ export default {
   methods: {
     ...mapMutations('Search', ['setOpenOverlay']),
     async searchShows() {
-      this.message = ''
-
-      getSearchShows(this.query)
-        .then(res => (this.shows = res.data))
-        .catch(error => {
-          this.message = error
-        })
+      getSearchShows(this.query).then(res => (this.shows = res.data))
     },
   },
 }

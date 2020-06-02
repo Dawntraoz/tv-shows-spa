@@ -1,6 +1,9 @@
 <template>
   <v-card color="transparent" class="white--text" flat width="185">
-    <router-link :to="{ name: 'show', params: { id: item.id } }">
+    <router-link
+      :to="{ name: 'show', params: { id: item.id } }"
+      :title="'Go to ' + item.name"
+    >
       <v-img
         :alt="item.name"
         :src="item.image ? item.image.medium : '' | urlFormatter"
