@@ -4,8 +4,10 @@
       threshold: 0.5,
     }"
     transition="fade-transition"
+    class="show-detail"
   >
     <v-parallax
+      v-if="!isLoading"
       class="blue-grey darken-4"
       height="auto"
       :src="backgroundImage | urlFormatter"
@@ -47,6 +49,7 @@
         </v-row>
       </v-container>
     </v-parallax>
+    <BaseLoader v-else />
   </v-lazy>
 </template>
 
@@ -61,6 +64,7 @@ export default {
   },
   data: () => ({
     starIcon: mdiStar,
+    isLoading: false,
   }),
   computed: {
     ...mapGetters('Shows', ['getShowInfo']),
@@ -83,16 +87,20 @@ export default {
     },
   },
   async mounted() {
+    this.isLoading = true
     await this.fetchShowImages(this.id)
     await this.fetchShow(this.id)
+    this.isLoading = false
   },
   methods: {
     ...mapActions('Shows', ['fetchShow']),
     ...mapActions('Shows', ['fetchShowImages']),
   },
   async beforeRouteUpdate(to, from, next) {
+    this.isLoading = true
     await this.fetchShowImages(to.params.id)
     await this.fetchShow(to.params.id)
+    this.isLoading = false
     next()
   },
 }
@@ -105,5 +113,8 @@ export default {
   .v-parallax__image-container {
     opacity: 0.15;
   }
+}
+.show-detail {
+  height: 100%;
 }
 </style>

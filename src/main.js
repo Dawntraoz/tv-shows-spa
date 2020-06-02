@@ -12,6 +12,11 @@ Vue.filter('urlFormatter', function(value) {
   return value.replace(/^http:\/\//i, 'https://')
 })
 
+// Global components
+import BaseLoader from '@/components/BaseLoader.vue'
+
+Vue.component('BaseLoader', BaseLoader)
+
 new Vue({
   router,
   store,
