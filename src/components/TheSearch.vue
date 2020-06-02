@@ -7,7 +7,13 @@
     class="search d-flex"
   >
     <div class="search-overlay d-flex flex-column">
-      <v-btn class="ml-auto" icon color="white" @click="setOpenOverlay(false)">
+      <v-btn
+        class="ml-auto"
+        icon
+        aria-label="close"
+        color="white"
+        @click="setOpenOverlay(false)"
+      >
         <v-icon>{{ closeIcon }}</v-icon>
       </v-btn>
       <v-text-field
