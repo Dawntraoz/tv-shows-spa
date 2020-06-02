@@ -1,7 +1,5 @@
 <template>
-  <v-col cols="12" class="pb-4">
-    <h2 class="white--text display-1">{{ title }}</h2>
-  </v-col>
+  <h2 class="white--text display-1 pb-4">{{ title }}</h2>
 </template>
 
 <script>

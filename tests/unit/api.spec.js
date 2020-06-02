@@ -22,11 +22,17 @@ describe('api.js', () => {
   it('should get a bad response with 404 status', done => {
     moxios.stubRequest('http://www.example.com/test', {
       status: 404,
-      responseText: 'bad request :(',
+      response: {
+        response: {
+          status: 404,
+        },
+      },
     })
     api
       .get('http://www.example.com/test')
-      .then(res => expect(res.status).toBe(404))
+      .catch(error => {
+        expect(error.response.status).toBe(404)
+      })
       .finally(done)
   })
 })

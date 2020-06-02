@@ -1,8 +1,8 @@
 <template>
-  <v-container>
-    <v-row v-for="genre in getGenres" :key="genre">
-      <ShowsListTitle :title="genre" />
-      <v-col cols="12">
+  <v-container class="show-listing">
+    <v-row v-if="!isLoading">
+      <v-col v-for="genre in getGenres" :key="genre" cols="12">
+        <ShowsListTitle :title="genre" />
         <v-lazy
           :options="{
             threshold: 0.5,
@@ -22,6 +22,7 @@
         </v-lazy>
       </v-col>
     </v-row>
+    <BaseLoader v-else />
   </v-container>
 </template>
 
@@ -60,3 +61,9 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+.show-listing {
+  height: 100%;
+}
+</style>
