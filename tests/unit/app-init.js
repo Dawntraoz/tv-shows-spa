@@ -8,6 +8,9 @@ import Vuex from 'vuex'
 import moxios from 'moxios'
 import api from '@/api'
 
+// Global components
+import BaseLoader from '@/components/BaseLoader.vue'
+
 function appInit(VueInstance) {
   Vue.use(Vuetify)
   moxios.install(api)
@@ -19,6 +22,7 @@ function appInit(VueInstance) {
     if (!value) return ''
     return value.replace(/^http:\/\//i, 'https://')
   })
+  VueInstance.component('BaseLoader', BaseLoader)
 
   return VueInstance
 }

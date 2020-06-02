@@ -22,9 +22,16 @@ Here you can see the tech stack used to develop this project
 - ECMAScript 6 (ES6)
 
 ### Vue
-- Vue cli (v4.3.1) Options: Babel, PWA, Router, Sass (dart-sass), ES-Linter + Prettier, Unit (Jest), Vuex (v3.4.0)
+- Vue cli (v4.3.1)
 - HTTP client: Axios
-- Vuetify
+- Unit testing: Jest
+- Routes management: VueRouter
+- Store management: Vuex (v3.4.0)
+- Components design: Vuetify
+- Preprocessor: Sass (dart-sass)
+- Code formatters: ES-Linter + Prettier
+- Added PWA
+
 
 ### Api
 TV shows API: http://www.tvmaze.com/api
@@ -72,8 +79,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Component naming convention: [Vue official style guide](https://vuejs.org/v2/style-guide)
 - Multi-word component names
 - PascalCase filenames
+- Base Global components as BaseLoader
 - Single instance component name as TheHeader and TheSearch
-- Child components have as a prefix the parent component name
+- Child components have as a prefix the parent component name (i.e. Shows)
 - Prop names in camelCase
 
 ## Author

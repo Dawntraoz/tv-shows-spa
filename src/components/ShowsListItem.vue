@@ -12,9 +12,11 @@
         class="blue-grey darken-4 elevation-6"
       />
     </router-link>
-    <h4 class="subtitle-1 pt-2">
-      {{ item.name }}
-    </h4>
+    <header>
+      <h3 class="subtitle-1 pt-2">
+        {{ item.name }}
+      </h3>
+    </header>
     <span v-if="item.rating && item.rating.average" class="subtitle-1">
       {{ item.rating.average }}
       <v-icon color="orange">{{ starIcon }}</v-icon>

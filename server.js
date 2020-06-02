@@ -3,7 +3,7 @@ const express = require('express')
 const expressStaticGzip = require('express-static-gzip')
 const path = require('path')
 
-app = express()
+const app = express()
 app.use(history())
 
 // gzip
