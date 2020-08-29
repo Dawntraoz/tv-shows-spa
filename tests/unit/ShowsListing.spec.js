@@ -19,7 +19,7 @@ describe('ShowsListing.vue', () => {
       localVue,
       store: storeMocks.store,
       mocks: {
-        $vuetify: { mobileBreakpoint: {} },
+        vuetify: { mobileBreakpoint: {} },
       },
       ...options,
     })
