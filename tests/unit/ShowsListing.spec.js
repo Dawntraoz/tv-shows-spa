@@ -15,8 +15,6 @@ describe('ShowsListing.vue', () => {
   let wrapper
 
   const mountFunction = options => {
-    storeMocks = createStoreMocks()
-
     return shallowMount(ShowsListing, {
       localVue,
       store: storeMocks.store,
@@ -25,6 +23,7 @@ describe('ShowsListing.vue', () => {
   }
 
   beforeEach(() => {
+    storeMocks = createStoreMocks()
     wrapper = mountFunction()
   })
 
