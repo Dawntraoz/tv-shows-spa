@@ -18,6 +18,9 @@ describe('ShowsListing.vue', () => {
     return shallowMount(ShowsListing, {
       localVue,
       store: storeMocks.store,
+      mocks: {
+        $vuetify: { breakpoint: {} },
+      },
       ...options,
     })
   }
