@@ -2,6 +2,7 @@
 TV Shows dashboard with listings by genres and ratings. Find the TV Show you want to know more about.
 
 [Demo TV Shows SPA](https://tv-shows-spa.herokuapp.com/)
+<img src="https://github.com/Dawntraoz/tv-shows-spa/workflows/CI/badge.svg?branch=master&event=push" alt="Continuous Integration Status">
 
 - [Prerequisites](#prerequisites)
 - [Technologies](#technologies)
