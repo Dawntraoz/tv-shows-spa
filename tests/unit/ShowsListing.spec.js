@@ -1,5 +1,6 @@
 // Components
 import ShowsListing from '@/views/ShowsListing.vue'
+import Vuetify from 'vuetify'
 
 // Utilities
 import { appInit } from './app-init'
@@ -8,6 +9,7 @@ import { __createMocks as createStoreMocks } from '@/store'
 
 jest.mock('@/store')
 
+const vuetify = new Vuetify()
 const localVue = appInit(createLocalVue())
 
 describe('ShowsListing.vue', () => {
@@ -18,9 +20,7 @@ describe('ShowsListing.vue', () => {
     return shallowMount(ShowsListing, {
       localVue,
       store: storeMocks.store,
-      mocks: {
-        vuetify: { mobileBreakpoint: {} },
-      },
+      vuetify,
       ...options,
     })
   }
