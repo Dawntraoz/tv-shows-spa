@@ -10,7 +10,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "axios-extensions": "^3.1.2",
     "compression-webpack-plugin": "^4.0.0",
     "connect-history-api-fallback": "^1.6.0",
